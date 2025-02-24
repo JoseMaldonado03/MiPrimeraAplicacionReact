@@ -1,15 +1,15 @@
-.star{
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    float: left;
-    cursor: pointer;
+.star {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  float: left;
+  cursor: pointer;
 }
 
-.car{
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    float: right;
-    cursor: pointer;
+.car {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  float: right;
+  cursor: pointer;
 }

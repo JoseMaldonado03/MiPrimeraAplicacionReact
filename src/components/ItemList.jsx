@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getProduct } from "../../asyncMock";
-import './ItemList.css'
-
+import { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getProduct } from '../../asyncMock';
+import './ItemList.css';
+import { CartContext } from '../CartContext';
 
 export default function ItemList() {
-   const { id } = useParams();
+  const { id } = useParams();
 
-   const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState(null);
 
-   useEffect(() =>{
-      setProduct(getProduct(id));
-   }, []);
+  useEffect(() => {
+    setProduct(getProduct(id));
+  }, []);
 
-   return (
-   <>
+  const [cart, addItem, removeItem] = useContext(CartContext);
+
+  return (
+    <>
       <h1>Vista de Detalle de producto {id}</h1>
       <p>ID: {product?.id}</p>
       <h3>Nombre: {product?.name}</h3>
@@ -22,9 +24,8 @@ export default function ItemList() {
       <p>Descripcion: {product?.description}</p>
       <p>Categoria: {product?.category}</p>
       <p>Precio ${product?.price}</p>
-      <button>+</button>
-      <button>-</button>
-      
-   </>
-   );
+      <button onClick={() => addItem(product)}>+</button>
+      <button onClick={() => removeItem(product)}>-</button>
+    </>
+  );
 }
