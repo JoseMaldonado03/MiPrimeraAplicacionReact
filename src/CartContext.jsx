@@ -34,5 +34,5 @@ export function CartProvider({ children }) {
     return alert('No hay productos añadidos en tu carrito.');
   };
 
-  return <CartContext.Provider value={[cart, addItem, removeItem]}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={[cart, addItem, removeItem, setCart]}>{children}</CartContext.Provider>;
 }

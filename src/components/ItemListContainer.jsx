@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getCategory, getProducts } from '../../asyncMock';
 import ItemCard from './ItemCard';
 import { useParams } from 'react-router-dom';
+import { getProducts, getCategory } from '../firebase/firebase';
 
 export default function ItemListContainer() {
   const [products, setProducts] = useState(null);

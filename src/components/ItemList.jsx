@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProduct } from '../../asyncMock';
+import { getProduct } from '../firebase/firebase';
 import './ItemList.css';
 import { CartContext } from '../CartContext';
 
@@ -9,11 +9,13 @@ export default function ItemList() {
 
   const [product, setProduct] = useState(null);
 
+  console.log({ product });
+
   useEffect(() => {
-    setProduct(getProduct(id));
+    getProduct(id).then((datos) => setProduct(datos));
   }, []);
 
-  const [cart, addItem, removeItem] = useContext(CartContext);
+  const [_, addItem, removeItem] = useContext(CartContext);
 
   return (
     <>
@@ -24,6 +26,7 @@ export default function ItemList() {
       <p>Descripcion: {product?.description}</p>
       <p>Categoria: {product?.category}</p>
       <p>Precio ${product?.price}</p>
+      <p>Stock {product?.stock}</p>
       <button onClick={() => addItem(product)}>+</button>
       <button onClick={() => removeItem(product)}>-</button>
     </>
